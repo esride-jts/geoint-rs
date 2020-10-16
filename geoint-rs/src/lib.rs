@@ -34,6 +34,20 @@ fn concave_hull_points(points: Vec<Point<f64>>) -> Polygon<f64> {
     multi_point.concave_hull(concavity)
 }
 
+use pyo3::prelude::*;
+use pyo3::wrap_pyfunction;
+
+#[pyfunction]
+fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
+    Ok((a + b).to_string())
+}
+
+#[pymodule]
+fn geoint_rs(_py: Python, module: &PyModule) -> PyResult<()> {
+    module.add_function(wrap_pyfunction!(sum_as_string, module)?).unwrap();
+
+    Ok(())
+}
 
 #[cfg(test)]
 mod tests {
