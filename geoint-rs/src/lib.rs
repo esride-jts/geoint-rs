@@ -44,7 +44,7 @@ fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
 
 #[pymodule]
 fn geoint_rs(_py: Python, module: &PyModule) -> PyResult<()> {
-    module.add_function(wrap_pyfunction!(sum_as_string, module)?).unwrap();
+    module.add_function(wrap_pyfunction!(sum_as_string, module)?)?;
 
     Ok(())
 }
