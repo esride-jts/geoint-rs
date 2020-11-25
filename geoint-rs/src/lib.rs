@@ -42,9 +42,22 @@ fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
     Ok((a + b).to_string())
 }
 
+#[pyfunction]
+fn build_concave_hull(coordinates: Vec<(f64, f64)>) -> PyResult<String> {
+    let points = coordinates
+        .into_iter()
+        .map(|(x, y)| {
+            Point::new(x, y)
+        }
+    ).collect();
+    let hull = concave_hull_points(points);
+    Ok(hull.exterior().num_coords().to_string())
+}
+
 #[pymodule]
 fn geoint_rs(_py: Python, module: &PyModule) -> PyResult<()> {
     module.add_function(wrap_pyfunction!(sum_as_string, module)?)?;
+    module.add_function(wrap_pyfunction!(build_concave_hull, module)?)?;
 
     Ok(())
 }
