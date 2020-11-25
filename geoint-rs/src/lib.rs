@@ -43,15 +43,22 @@ fn sum_as_string(a: usize, b: usize) -> PyResult<String> {
 }
 
 #[pyfunction]
-fn build_concave_hull(coordinates: Vec<(f64, f64)>) -> PyResult<String> {
+fn build_concave_hull(coordinates: Vec<(f64, f64)>) -> PyResult<Vec<(f64, f64)>> {
     let points = coordinates
         .into_iter()
         .map(|(x, y)| {
             Point::new(x, y)
         }
     ).collect();
+    
     let hull = concave_hull_points(points);
-    Ok(hull.exterior().num_coords().to_string())
+    let hull_coordinates = hull
+        .exterior().points_iter()
+        .map(|point| {
+            (point.x(), point.y())
+        }
+    ).collect();
+    Ok(hull_coordinates)
 }
 
 #[pymodule]
