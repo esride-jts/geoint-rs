@@ -9,6 +9,14 @@
 			],
 			"group": "build",
 			"label": "Rust: cargo build - geoint-rs"
+		},
+		{
+			"type": "shell",
+			"command": "./scripts/Rename_Library.ps1",
+			"dependsOn": ["Rust: cargo build - geoint-rs"],
+			"problemMatcher": [],
+			"group": "build",
+			"label": "Build *.pyd"
 		}
 	]
 }
