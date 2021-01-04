@@ -2,21 +2,44 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "Rust: cargo build",
 			"type": "cargo",
 			"subcommand": "build",
 			"problemMatcher": [
 				"$rustc"
 			],
-			"group": "build",
-			"label": "Rust: cargo build - geoint-rs"
+			"group": "build"
 		},
 		{
+			"label": "Build *.pyd",
 			"type": "shell",
 			"command": "./scripts/Rename_Library.ps1",
-			"dependsOn": ["Rust: cargo build - geoint-rs"],
+			"args": [
+				"./target/debug/geoint_rs.dll", "geoint_rs.pyd"
+			],
+			"dependsOn": ["Rust: cargo build"],
 			"problemMatcher": [],
-			"group": "build",
-			"label": "Build *.pyd"
-		}
+			"group": "build"
+		},
+		{
+            "label": "Rust: cargo build --release",
+            "type": "shell",
+            "command": "cargo build --release",
+            "problemMatcher": [
+                "$rustc"
+			],
+			"group": "build"
+		},
+		{
+            "label": "Release *.pyd",
+            "type": "shell",
+			"command": "./scripts/Rename_Library.ps1",
+			"args": [
+				"./target/release/geoint_rs.dll", "geoint_rs.pyd"
+			],
+			"dependsOn": ["Rust: cargo build --release"],
+			"problemMatcher": [],
+			"group": "build"
+        }
 	]
 }

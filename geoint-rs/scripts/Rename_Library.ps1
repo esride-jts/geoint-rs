@@ -1,2 +1,2 @@
 ﻿# -NewName must be a name, the path must be identical!
-Rename-Item -Path "./target/debug/geoint_rs.dll" -NewName "geoint_rs.pyd"
+Rename-Item -Path $args[0] -NewName $args[1]
