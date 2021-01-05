@@ -15,7 +15,7 @@
 			"type": "shell",
 			"command": "./scripts/Rename_Library.ps1",
 			"args": [
-				"./target/debug/geoint_rs.dll", "geoint_rs.pyd"
+				"./target/debug/geoint.dll", "geoint.pyd"
 			],
 			"dependsOn": ["Rust: cargo build"],
 			"problemMatcher": [],
@@ -35,7 +35,7 @@
             "type": "shell",
 			"command": "./scripts/Rename_Library.ps1",
 			"args": [
-				"./target/release/geoint_rs.dll", "geoint_rs.pyd"
+				"./target/release/geoint.dll", "geoint.pyd"
 			],
 			"dependsOn": ["Rust: cargo build --release"],
 			"problemMatcher": [],
