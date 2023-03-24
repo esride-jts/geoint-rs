@@ -77,7 +77,7 @@ fn build_concave_hull(coordinates: Vec<(f64, f64)>) -> PyResult<Vec<(f64, f64)>>
 }
 
 #[pymodule]
-fn geoint_rs(_py: Python, module: &PyModule) -> PyResult<()> {
+fn geoint(_py: Python, module: &PyModule) -> PyResult<()> {
     module.add_function(wrap_pyfunction!(sum_as_string, module)?)?;
     module.add_function(wrap_pyfunction!(build_concave_hull, module)?)?;
 
