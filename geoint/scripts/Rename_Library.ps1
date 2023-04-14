@@ -1,2 +1,2 @@
 ﻿# -NewName must be a name, the path must be identical!
-Rename-Item -Path $args[0] -NewName $args[1]
+Move-Item -Path $args[0] -Destination $args[1] -Force
