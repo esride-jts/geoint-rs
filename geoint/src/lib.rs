@@ -15,7 +15,7 @@
 
 mod traits;
 
-use geo::{Coordinate, MultiPoint, Point, Polygon, GeometryCollection};
+use geo::{Coord, MultiPoint, Point, Polygon, GeometryCollection};
 use geo::concave_hull::ConcaveHull;
 use geo::convex_hull::ConvexHull;
 use geo::algorithm::is_convex::IsConvex;
@@ -68,7 +68,7 @@ fn build_concave_hull(coordinates: Vec<(f64, f64)>) -> PyResult<Vec<(f64, f64)>>
     
     let hull = concave_hull_points(points);
     let hull_coordinates = hull
-        .exterior().points_iter()
+        .exterior().points()
         .map(|point| {
             (point.x(), point.y())
         }
