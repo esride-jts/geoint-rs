@@ -15,8 +15,8 @@ name = "geoint"
 crate-type = ["cdylib"]
 
 [dependencies]
-geo = "0.15.0"
+geo = "0.24.1"
 
 [dependencies.pyo3]
-version = "0.12.3"
+version = "0.18.3"
 features = ["extension-module"]
