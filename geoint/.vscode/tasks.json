@@ -4,7 +4,7 @@
 		{
 			"label": "Rust: cargo build",
 			"type": "cargo",
-			"subcommand": "build",
+			"command": "build",
 			"problemMatcher": [
 				"$rustc"
 			],
